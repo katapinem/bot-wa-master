@@ -3,7 +3,9 @@ const qrcode = require('qrcode-terminal');
 const data = require('./data.json');
 
 
-const client = new Client();
+const client = new Client({
+    puppeteer: {headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-extensions']}
+});
 
 client.on('qr', (qr) => {
     // Generate and scan this code with your phone
